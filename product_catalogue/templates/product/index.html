@@ -6,7 +6,24 @@
 <ul>
     {% for product in products %}
         <li>
-            <a href="/product_catalogue/{{ product.id}}/">{{product.name}}</a>
+            <a href="/product_catalogue/{{ product.id}}/">{{product}}</a>
         </li>
     {% endfor %}
 </ul>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page={{ products.previous_page_number }}{% if  request.GET.name%}&name={{ request.GET.name }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ products.next_page_number }}{% if  request.GET.name%}&name={{ request.GET.name }}{% endif %}">next</a>
+        {% endif %}
+    </span>
+</div>
