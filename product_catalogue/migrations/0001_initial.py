@@ -31,14 +31,14 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('is_active', models.BooleanField(default=True)),
-                ('is_visibility', models.FloatField()),
+                ('is_visibility', models.BooleanField()),
                 ('price', models.FloatField()),
                 ('price_offer', models.FloatField()),
                 ('offer_day_from', models.DateTimeField()),
                 ('offer_day_to', models.DateTimeField()),
                 ('quantity', models.FloatField()),
                 ('sku', models.FloatField()),
-                ('product_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_catalogue.Product')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_catalogue.Product')),
             ],
         ),
     ]
