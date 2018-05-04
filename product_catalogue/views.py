@@ -1,9 +1,18 @@
 from django.http import Http404
 from .models import Product
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
 
 def index(request):
-    products = Product.objects.all()
+    params = request.GET.get('name')
+    if params:
+        products = Product.objects.filter(name__icontains=params)
+    else:
+        products = Product.objects.all()
+
+
     context = {'products': products}
     return render(request, 'product/index.html', context)
 

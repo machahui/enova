@@ -1,4 +1,8 @@
 <h1>Lista de productos</h1>
+<form method="GET" action="">
+    <input type="text" name="name" placeholder="product name" />
+    <input type="submit" value="Search"/>
+</form>
 <ul>
     {% for product in products %}
         <li>
